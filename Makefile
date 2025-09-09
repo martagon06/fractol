@@ -1,8 +1,8 @@
 
-NAME = fractol
+NAME := fractol
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror 
+CC := cc
+CFLAGS := -Wall -Wextra -Werror -Iinclude -g
 SRC_DIR = src
 OBJ_DIR = obj
 
