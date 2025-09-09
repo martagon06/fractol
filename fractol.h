@@ -6,7 +6,7 @@
 /*   By: miguelmo <miguelmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 13:30:16 by miguelmo          #+#    #+#             */
-/*   Updated: 2025/09/09 13:07:26 by miguelmo         ###   ########.fr       */
+/*   Updated: 2025/09/09 19:38:29 by miguelmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,22 @@ typedef struct s_app
 }	t_app;
 //funcions
 
+//parse
+t_conf	parse(int argc, char **argv);
+int		set_arg(int argc, char **argv);
+int		is_valid_d(char *str);
+int		use_msg(void);
+int		range(double max, double min, doublen);
+
+//operations
+t_complex	adder(t_complex complex1, t_complex complex2);
+t_complex	multi(t_complex c1, t_complex c2);
+t_complex	mod_squared(t_complex c1);
+
+//utils
+double	ft_atof(char *str);
+void	defaultcon(t_conf *config);
+
+//mandelbrot
+int	mandelbrot(t_complex c, t_complex z, int limit);
 #endif
