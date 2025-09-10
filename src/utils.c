@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguelmo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: miguelmo <miguelmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:53:57 by miguelmo          #+#    #+#             */
-/*   Updated: 2025/09/09 19:26:06 by miguelmo         ###   ########.fr       */
+/*   Updated: 2025/09/10 20:59:08 by miguelmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include ".../fractol.h"
+#include "../fractol.h"
 
 static double	integer_part(char *str)
 {
@@ -29,7 +29,7 @@ static double	integer_part(char *str)
 	while (str[i] && str[i] != '+' && str[i] != '-')
 	{
 		r += (str[i] - '0') * mult;
-		mutl *= 10;
+		mult *= 10;
 		i--;
 	}
 	return (r);
@@ -59,21 +59,36 @@ static double	fractional_part(char *str)
 
 double	ft_atof(char *str)
 {
-	double	rest;
 	double	sign;
+	double	r;
 
+	sign = 1.0;
 	if (str[0] == '-')
-		sign = -1;	
+		sign = -1.0;
 	r = (sign * (integer_part(str) + fractional_part(str)));
 	return (r);
 }
 
-void	defaultcon(t_conf *config)
+void	defaultconf(t_conf *config)
 {
-	config->zoom = 3.5 / WIDTH;	
-	config->center.re  = 0;
+	config->zoom = 3.5 / WIDTH;
+	config->center.re = 0;
 	config->center.im = 0;
 	config->x_limit = WIDTH;
 	config->y_limit = HEIGHT;
 	config->max = MAX_ITER;
+}
+
+t_app	unify(mlx_t *mlx, mlx_image_t **img, t_conf *conf)
+{
+	t_app	r;
+
+	r.mlx = mlx;
+	r.img = *img;
+	r.conf = conf;
+	if (conf->set == 1)
+		r.func = mandelbrot;
+	else
+		r.func = julia;
+	return (r);
 }

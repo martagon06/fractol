@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   operations_complex.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguelmo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: miguelmo <miguelmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 18:42:57 by miguelmo          #+#    #+#             */
-/*   Updated: 2025/09/09 19:15:36 by miguelmo         ###   ########.fr       */
+/*   Updated: 2025/09/10 20:28:56 by miguelmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include ".../fractol.h"
+#include "../fractol.h"
 
 t_complex	adder(t_complex complex1, t_complex complex2)
 {
@@ -30,7 +30,7 @@ t_complex	multi(t_complex c1, t_complex c2)
 	return (r);
 }
 
-t_complex	mod_squared(t_complex c1)
+double	mod_squared(t_complex c1)
 {
 	return (c1.re * c1.re + c1.im * c1.im);
 }

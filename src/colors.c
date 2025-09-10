@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miguelmo <miguelmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 19:27:23 by miguelmo          #+#    #+#             */
-/*   Updated: 2025/09/10 20:30:41 by miguelmo         ###   ########.fr       */
+/*   Created: 2025/09/10 19:56:27 by miguelmo          #+#    #+#             */
+/*   Updated: 2025/09/10 21:03:57 by miguelmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-int	mandelbrot(t_complex c, t_complex z, int limit)
+inline int	color(int iter, int max)
 {
-	t_complex	temp;
-	int			i;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+	double			t;
 
-	(void)z;
-	i = 0;
-	temp.re = 0;
-	temp.im = 0;
-	while (mod_squared(temp) <= 4 && i < limit)
-	{
-		temp = adder(multi(temp, temp), c);
-		i++;
-	}
-	return (i);
+	if (iter == max)
+		return (0x000000FF);
+	t = (double)iter / max;
+	r = (unsigned char)(sin(5 * t * 3.1415) * 127 + 128);
+	g = (unsigned char)(sin(5 * t * 3.1415 + 2) * 127 + 128);
+	b = (unsigned char)(sin(5 * t * 3.1415 * 4) * 127 + 128);
+	return (r << 24 | g << 16 | b << 8 | 0xFF);
 }

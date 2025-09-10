@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miguelmo <miguelmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 19:27:23 by miguelmo          #+#    #+#             */
-/*   Updated: 2025/09/10 20:30:41 by miguelmo         ###   ########.fr       */
+/*   Created: 2025/09/10 12:11:44 by miguelmo          #+#    #+#             */
+/*   Updated: 2025/09/10 20:29:14 by miguelmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-int	mandelbrot(t_complex c, t_complex z, int limit)
+int	julia(t_complex z, t_complex c, int limit)
 {
-	t_complex	temp;
-	int			i;
+	int	i;
 
-	(void)z;
 	i = 0;
-	temp.re = 0;
-	temp.im = 0;
-	while (mod_squared(temp) <= 4 && i < limit)
+	while (mod_squared(z) <= 4 && i < limit)
 	{
-		temp = adder(multi(temp, temp), c);
+		z = adder(multi(z, z), c);
 		i++;
 	}
 	return (i);
