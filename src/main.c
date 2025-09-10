@@ -6,7 +6,7 @@
 /*   By: miguelmo <miguelmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 11:44:49 by miguelmo          #+#    #+#             */
-/*   Updated: 2025/09/10 20:46:44 by miguelmo         ###   ########.fr       */
+/*   Updated: 2025/09/10 21:32:08 by miguelmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static	void	ft_error(void)
 	exit(EXIT_FAILURE);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char *argv[])
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;

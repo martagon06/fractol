@@ -6,7 +6,7 @@
 /*   By: miguelmo <miguelmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:40:00 by miguelmo          #+#    #+#             */
-/*   Updated: 2025/09/10 20:54:19 by miguelmo         ###   ########.fr       */
+/*   Updated: 2025/09/10 21:36:26 by miguelmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int	use_msg(void)
 	return (1);
 }
 
-int	set_arg(int argc, char **argv)
+int	set_arg(int argc, char *argv[])
 {
 	if (argc == 2 && argv[1][0] == '1')
 		return (1);
-	else if (argc == 4 && argv[2][0] == '2')
+	else if (argc == 4 && argv[1][0] == '2')
 		return (2);
 	else
 		exit(use_msg());
@@ -64,7 +64,7 @@ int	is_valid_d(char *str)
 	return (1);
 }
 
-t_conf	parse(int argc, char **argv)
+t_conf	parse(int argc, char *argv[])
 {
 	t_conf		r;
 	t_complex	z;
