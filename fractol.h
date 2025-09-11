@@ -6,7 +6,7 @@
 /*   By: miguelmo <miguelmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 13:30:16 by miguelmo          #+#    #+#             */
-/*   Updated: 2025/09/10 21:08:01 by miguelmo         ###   ########.fr       */
+/*   Updated: 2025/09/11 17:49:13 by miguelmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
-# define WIDTH 900
-# define HEIGHT 800
-# define MAX_ITER 150
+# define WIDTH 1920
+# define HEIGHT 1080
+# define MAX_ITER 200
 
 //any structs
 
@@ -92,5 +92,6 @@ extern int	color(int iter, int max);
 int			ft_strlen(const char *s);
 int			ft_isdigit(char c);
 int			ft_atoi(const char *nptr);
+int			ft_strcmp(const char *s1, const char *s2);
 
 #endif

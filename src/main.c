@@ -6,7 +6,7 @@
 /*   By: miguelmo <miguelmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 11:44:49 by miguelmo          #+#    #+#             */
-/*   Updated: 2025/09/10 21:32:08 by miguelmo         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:27:10 by miguelmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static	void	ft_error(void)
 {
+	perror("fractol: initialization failed");
 	exit(EXIT_FAILURE);
 }
 
@@ -30,10 +31,17 @@ int	main(int argc, char *argv[])
 	if (!mlx)
 		ft_error();
 	img = mlx_new_image(mlx, conf.x_limit, conf.y_limit);
+	if (!img)
+	{
+		mlx_terminate(mlx);
+		ft_error();
+	}
 	app = unify(mlx, &img, &conf);
 	mlx_key_hook(mlx, my_keyhook, &app);
 	mlx_close_hook(mlx, my_close, &app);
 	mlx_scroll_hook(mlx, &my_scrollhook, &app);
 	mlx_loop_hook(mlx, update, &app);
 	put_pixel(&app);
+	mlx_loop(mlx);
+	return (0);
 }

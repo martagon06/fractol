@@ -6,11 +6,12 @@
 /*   By: miguelmo <miguelmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 17:53:57 by miguelmo          #+#    #+#             */
-/*   Updated: 2025/09/10 20:59:08 by miguelmo         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:40:33 by miguelmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
+#include <string.h>
 
 static double	integer_part(char *str)
 {
@@ -26,10 +27,13 @@ static double	integer_part(char *str)
 	while (str[i] && str[i] != '.')
 		i++;
 	i--;
-	while (str[i] && str[i] != '+' && str[i] != '-')
+	while (i >= 0 && str[i] != '+' && str[i] != '-')
 	{
-		r += (str[i] - '0') * mult;
-		mult *= 10;
+		if (str[i] >= '0' && str[i] <= '9')
+		{
+			r += (str[i] - '0') * mult;
+			mult *= 10;
+		}
 		i--;
 	}
 	return (r);
@@ -62,6 +66,10 @@ double	ft_atof(char *str)
 	double	sign;
 	double	r;
 
+	if (!str || *str == '\0')
+		return (0.0);
+	if (!strpbrk(str, "0123456789"))
+		return (0.0);
 	sign = 1.0;
 	if (str[0] == '-')
 		sign = -1.0;

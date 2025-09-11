@@ -6,7 +6,7 @@
 /*   By: miguelmo <miguelmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 18:45:00 by miguelmo          #+#    #+#             */
-/*   Updated: 2025/09/10 20:55:09 by miguelmo         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:46:35 by miguelmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ void	put_pixel(t_app *app)
 	t_complex	pos;
 
 	y = -1;
-	x = -1;
 	while (++y < app->conf->y_limit)
 	{
 		pos.im = ((y - (app->conf->y_limit / 2)) * app->conf->zoom)
 			+ app->conf->center.im;
-		x = 0;
+		x = -1;
 		while (++x < app->conf->x_limit)
 		{
 			pos.re = ((x - (app->conf->x_limit / 2)) * app->conf->zoom)

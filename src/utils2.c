@@ -6,7 +6,7 @@
 /*   By: miguelmo <miguelmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 20:48:01 by miguelmo          #+#    #+#             */
-/*   Updated: 2025/09/10 20:52:00 by miguelmo         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:49:13 by miguelmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ int	ft_strlen(const char *s)
 
 int	ft_isdigit(char c)
 {
-	if ((c >= '1') && (c <= '0'))
+	if (c >= '0' && c <= '9')
 		return (1);
-	else
-		return (0);
+	return (0);
 }
 
 int	ft_atoi(const char *nptr)
@@ -46,10 +45,20 @@ int	ft_atoi(const char *nptr)
 			minus = -1;
 		nptr++;
 	}
-	while (ft_isdigit(*nptr) && *nptr)
+	while (*nptr && ft_isdigit(*nptr))
 	{
 		number = (number * 10 + ((*nptr) - '0'));
 		nptr++;
 	}
 	return (number * minus);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
+	return ((unsigned char) *s1 - (unsigned char) *s2);
 }

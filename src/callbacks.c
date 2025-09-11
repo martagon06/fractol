@@ -6,7 +6,7 @@
 /*   By: miguelmo <miguelmo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:38:18 by miguelmo          #+#    #+#             */
-/*   Updated: 2025/09/10 20:46:48 by miguelmo         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:28:42 by miguelmo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,14 @@ void	my_scrollhook(double xdelta, double ydelta, void *param)
 
 	app = (t_app *)param;
 	(void)xdelta;
-	if (ydelta > 0)
+	if (ydelta < 0)
 		app->conf->zoom *= 1.1;
-	else if (ydelta < 0)
-		app->conf->zoom *= 0.8;
+	else if (ydelta > 0)
+		app->conf->zoom /= 1.1;
+	if (app->conf->zoom < 1e-12)
+		app->conf->zoom = 1e-12;
+	if (app->conf->zoom > 1e6)
+		app->conf->zoom = 1e6;
 	put_pixel(app);
 }
 
